@@ -1,10 +1,32 @@
-import React from 'react';
-import HomePage from './components/HomePage';
+// src/App.js
+import React, { useState } from 'react';
+import Login from './pages/Login';
+import Register from './pages/Register';
+import Toggle from './components/Toggle';
+import './App.css';
 
 function App() {
+  const [isLogin, setIsLogin] = useState(true);
+
+  const toggleLogin = () => {
+    setIsLogin(prevState => !prevState);
+  };
+
   return (
-    <div className="App">
-      <HomePage />
+    <div className="container">
+      <div className="form-container">
+        {isLogin ? (
+          <>
+            <Login />
+            <Toggle isLogin={isLogin} toggleLogin={toggleLogin} />
+          </>
+        ) : (
+          <>
+            <Register />
+            <Toggle isLogin={isLogin} toggleLogin={toggleLogin} />
+          </>
+        )}
+      </div>
     </div>
   );
 }
