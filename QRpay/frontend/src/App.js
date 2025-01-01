@@ -1,32 +1,22 @@
-// src/App.js
 import React, { useState } from 'react';
 import Login from './pages/Login';
 import Register from './pages/Register';
-import Toggle from './components/Toggle';
-import './App.css';
+import './style/global.css'; // Import the global CSS file
 
 function App() {
   const [isLogin, setIsLogin] = useState(true);
 
   const toggleLogin = () => {
-    setIsLogin(prevState => !prevState);
+    setIsLogin((prevState) => !prevState);
   };
 
   return (
-    <div className="container">
-      <div className="form-container">
-        {isLogin ? (
-          <>
-            <Login />
-            <Toggle isLogin={isLogin} toggleLogin={toggleLogin} />
-          </>
-        ) : (
-          <>
-            <Register />
-            <Toggle isLogin={isLogin} toggleLogin={toggleLogin} />
-          </>
-        )}
-      </div>
+    <div>
+      {isLogin ? (
+        <Login toggleLogin={toggleLogin} />
+      ) : (
+        <Register toggleLogin={toggleLogin} />
+      )}
     </div>
   );
 }
