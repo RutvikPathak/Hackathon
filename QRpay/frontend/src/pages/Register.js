@@ -1,7 +1,20 @@
-import React from 'react';
+// frontend/src/pages/Register.js
+import React, { useEffect, useState } from 'react';
 import Toggle from '../components/Toggle';
 
 function Register({ toggleLogin }) {
+  const [idTypes, setIdTypes] = useState([]);
+
+  useEffect(() => {
+    // Fetch user ID types from the backend
+    fetch('http://localhost:5000/api/user-id-types')
+      .then((response) => response.json())
+      .then((data) => {
+        setIdTypes(data); // Set the fetched data to state
+      })
+      .catch((error) => console.error('Error fetching user ID types:', error));
+  }, []);
+
   return (
     <div className="container">
       <h2>Register</h2>
@@ -14,9 +27,15 @@ function Register({ toggleLogin }) {
           <div className="input-group">
             <label>ID Type</label>
             <select>
-              <option value="passport">Passport</option>
-              <option value="national_id">National ID</option>
-              <option value="driver_license">Driver's License</option>
+              {idTypes.length > 0 ? (
+                idTypes.map((type, index) => (
+                  <option key={index} value={type.user_IDtype_name}>
+                    {type.user_IDtype_name}
+                  </option>
+                ))
+              ) : (
+                <option>Loading...</option>
+              )}
             </select>
           </div>
         </div>

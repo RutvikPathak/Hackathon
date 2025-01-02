@@ -1,16 +1,18 @@
 const express = require('express');
 const cors = require('cors');
-const app = express();
+const userIDtypeRoute = require('./routes/userIDtypeRoute');
 
+const app = express();
+const PORT = process.env.PORT || 5000;
+
+// Middleware
 app.use(cors());
 app.use(express.json());
 
-// Example route
-app.get('/', (req, res) => {
-  res.send('Hello from the backend!');
-});
+// Routes
+app.use('/api', userIDtypeRoute);
 
-const PORT = process.env.PORT || 5000;
+// Start server
 app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+  console.log(`Server running on http://localhost:${PORT}`);
 });
