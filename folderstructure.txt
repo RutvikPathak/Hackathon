@@ -1,0 +1,17 @@
+QRpay
+-backend
+ |-node_module
+ |-server.js
+-frontend
+ |-node_module
+ |-public
+ |-src
+   |-components
+     |-FormGroup.js
+     |-Toggle.js
+   |-pages
+     |-Login.js
+     |-Register.js
+   |-style
+     |-global.css
+ |-App.js
