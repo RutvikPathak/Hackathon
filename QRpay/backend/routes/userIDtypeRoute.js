@@ -1,15 +1,6 @@
-// backend/routes/userIDtypeRoute.js
 const express = require('express');
-const mysql = require('mysql2');
+const connection = require('../config/db'); // Adjust the path as per your project structure
 const router = express.Router();
-
-// Create a connection to the database
-const connection = mysql.createConnection({
-  host: 'localhost',
-  user: 'root', 
-  password: 'root', 
-  database: 'user_records_db',
-});
 
 // API endpoint to get all user ID types
 router.get('/user-id-types', (req, res) => {
