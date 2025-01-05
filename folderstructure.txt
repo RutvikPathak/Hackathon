@@ -1,7 +1,10 @@
 QRpay
 -backend
- |-router
+ |-config
+   |-db.js
+ |-routes
    |-userIDtypeRoute.js
+   |-userRoute.js
  |-node_module
  |-server.js
 -frontend
